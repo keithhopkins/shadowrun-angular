@@ -1,5 +1,11 @@
 <div class='container'>
-  <form class='new-post-form'>
+  <button class='btn btn-default' ng-click='attributes=!attributes'>Attributes</button>
+  <button class='btn btn-default' ng-click='skills=!skills'>Active Skills</button>
+  <button class='btn btn-default' ng-click='qualities=!qualities'>Qualities</button>
+  <button class='btn btn-default' ng-click='items=!items'>Items</button>
+  <button class='btn btn-default' ng-click='knowledge=!knowledge'>Knowledge Skills</button>
+
+  <form class='new-post-form' ng-show='attributes'>
     <div class="form-group attr-input">
       <label for="body">Body</label>
       <input type="number" id="body">
