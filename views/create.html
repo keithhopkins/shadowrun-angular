@@ -1,11 +1,64 @@
-<div class='container'>
-  <button class='btn btn-default' ng-click='attributes=!attributes'>Attributes</button>
-  <button class='btn btn-default' ng-click='skills=!skills'>Active Skills</button>
-  <button class='btn btn-default' ng-click='qualities=!qualities'>Qualities</button>
-  <button class='btn btn-default' ng-click='items=!items'>Items</button>
-  <button class='btn btn-default' ng-click='knowledge=!knowledge'>Knowledge Skills</button>
+<button class='btn btn-default' ng-click='attributes=!attributes'>Attributes</button>
+<button class='btn btn-default' ng-click='skills=!skills'>Active Skills</button>
+<button class='btn btn-default' ng-click='qualities=!qualities'>Qualities</button>
+<button class='btn btn-default' ng-click='items=!items'>Items</button>
+<button class='btn btn-default' ng-click='knowledge=!knowledge'>Knowledge Skills</button>
 
-  <form class='new-post-form' ng-show='attributes'>
+<div class='container'>
+  <!-- skills form -->
+  <form class='form-inline' ng-show='skills'>
+    <div class="form-group">
+      <label for="skill-name">Skill</label>
+      <input type="text" class="form-control" id="skill-name" placeholder="Stealth">
+    </div>
+    <div class="form-group">
+      <label for="skill-rank">Rank</label>
+      <input type="number" class="form-control" id="skill-rank">
+    </div>
+    <button type="submit" class="btn btn-default">Add Skill</button>
+  </form>
+
+  <!-- qualities form -->
+  <form class='form-inline' ng-show='qualities'>
+    <div class="form-group">
+      <label for="quality-name">Quality</label>
+      <input type="text" class="form-control" id="quality-name" placeholder="Ambidextrous">
+    </div>
+    <div class="form-group">
+      <label for="quality-cost">Cost</label>
+      <input type="number" class="form-control" id="quality-cost">
+    </div>
+    <button type="submit" class="btn btn-default">Add Quality</button>
+  </form>
+
+  <!-- item form -->
+  <form class='form-inline' ng-show='items'>
+    <div class="form-group">
+      <label for="item-name">Item</label>
+      <input type="text" class="form-control" id="item-name" placeholder="Pistol">
+    </div>
+    <div class="form-group">
+      <label for="item-cost">Cost</label>
+      <input type="number" class="form-control" id="item-cost">
+    </div>
+    <button type="submit" class="btn btn-default">Add Item</button>
+  </form>
+
+  <!-- knowledge skill form -->
+  <form class='form-inline' ng-show='knowledge'>
+    <div class="form-group">
+      <label for="knowledge-name">Knowledge Skill</label>
+      <input type="text" class="form-control" id="knowledge-name" placeholder="Corporate">
+    </div>
+    <div class="form-group">
+      <label for="knowledge-rank">Rank</label>
+      <input type="number" class="form-control" id="knowledge-rank">
+    </div>
+    <button type="submit" class="btn btn-default">Add Skill</button>
+  </form>
+
+  <!-- attribute form -->
+  <form ng-show='attributes'>
     <div class="form-group attr-input">
       <label for="body">Body</label>
       <input type="number" id="body">
