@@ -1,1 +1,9 @@
-/* add custom styles */
+.attr-input {
+  max-width: 120px;
+  margin: 2px;
+}
+
+.attr-input input {
+  float: right;
+  width: 40px;
+}
