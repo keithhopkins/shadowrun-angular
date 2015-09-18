@@ -1,3 +1,7 @@
+section {
+  margin: 5px;
+  padding: 5px;
+}
 .attr-input {
   max-width: 120px;
   margin: 2px;

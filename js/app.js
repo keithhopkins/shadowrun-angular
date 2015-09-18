@@ -1,21 +1,20 @@
-var app = angular.module('shadowrunApp', ['ngRoute']);
-
-app.config(function($routeProvider, $locationProvider){
+angular.module('shadowrunApp', ['ngRoute', 'createDirective'])
+  .config(function($routeProvider, $locationProvider){
   $routeProvider
     .when('/', {
-      templateUrl: 'views/home.html',
+      templateUrl: 'home/home.html',
       controller: 'HomeController'
     })
     .when('/combat', {
-      templateUrl: 'views/combat.html',
+      templateUrl: 'combat/combat.html',
       controller: 'CombatController'
     })
     .when('/create', {
-      templateUrl: 'views/create.html',
+      templateUrl: 'create/create.html',
       controller: 'CreateController'
     })
     .when('/characters', {
-      templateUrl: 'views/characters.html',
+      templateUrl: 'characters/characters.html',
       controller: 'CharactersController'
     })
     .otherwise({

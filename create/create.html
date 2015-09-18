@@ -1,0 +1,39 @@
+<div class='container'>
+  <!-- form column -->
+  <div class='col-xs-6'>
+    <section>
+      <button class='btn btn-default' ng-click='showRace=!showRace'>Race</button>
+      <race-form ng-show='showRace'></race-form>
+    </section>
+
+    <section>
+      <button class='btn btn-default' ng-click='showSkills=!showSkills'>Active Skills</button>
+      <skills-form ng-show='showSkills'></skills-form>
+    </section>
+
+    <section>
+      <button class='btn btn-default' ng-click='showQualities=!showQualities'>Qualities</button>
+      <qualities-form ng-show='showQualities'></qualities-form>
+    </section>
+
+    <section>
+      <button class='btn btn-default' ng-click='showItems=!showItems'>Items</button>
+      <items-form ng-show='showItems'></items-form>
+    </section>
+
+    <section>
+      <button class='btn btn-default' ng-click='showKnowledge=!showKnowledge'>Knowledge Skills</button>
+      <knowledge-form ng-show='showKnowledge'></knowledge-form>
+    </section>
+
+    <section>
+      <button class='btn btn-default' ng-click='showAttributes=!showAttributes'>Attributes</button>
+      <attributes-form ng-show='showAttributes'></attributes-form>
+    </section>
+  </div>
+
+  <!-- current character sheet -->
+  <div class='col-xs-6'>
+    <h2>Current Character</h2>
+  </div>
+</div> <!-- container -->
