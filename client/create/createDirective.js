@@ -9,7 +9,7 @@ angular.module('createDirective',[])
         race: '='
       },
       replace: true,
-      templateUrl: 'create/templates/race-form.html',
+      templateUrl: 'create/partials/race-form.html',
       controller: function($scope){
         // alert($scope.race);
       }
@@ -23,7 +23,7 @@ angular.module('createDirective')
         skill: '='
       },
       replace: true,
-      templateUrl: 'create/templates/skills-form.html',
+      templateUrl: 'create/partials/skills-form.html',
       controller: function($scope){
         // alert('hello');
       }
@@ -37,7 +37,7 @@ angular.module('createDirective')
         quality: '='
       },
       replace: true,
-      templateUrl: 'create/templates/qualities-form.html',
+      templateUrl: 'create/partials/qualities-form.html',
       controller: function($scope){
         // alert('hello');
       }
@@ -52,7 +52,7 @@ angular.module('createDirective')
         item: '='
       },
       replace: true,
-      templateUrl: 'create/templates/items-form.html',
+      templateUrl: 'create/partials/items-form.html',
       controller: function($scope){
         // alert('hello');
       }
@@ -67,7 +67,7 @@ angular.module('createDirective')
         // add attributes
       },
       replace: true,
-      templateUrl: 'create/templates/attributes-form.html',
+      templateUrl: 'create/partials/attributes-form.html',
       controller: function($scope){
         // alert('hello');
       }
@@ -82,7 +82,7 @@ angular.module('createDirective')
         knowledge: '='
       },
       replace: true,
-      templateUrl: 'create/templates/knowledge-form.html',
+      templateUrl: 'create/partials/knowledge-form.html',
       controller: function($scope){
         // alert('hello');
       }
