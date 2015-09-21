@@ -1,11 +1,11 @@
 <form class='form-inline'>
   <div class="form-group">
     <label for="quality-name">Quality</label>
-    <input type="text" class="form-control" id="quality-name" placeholder="Ambidextrous">
+    <input type="text" class="form-control" id="quality-name" placeholder="Ambidextrous" ng-model='quality'>
   </div>
-  <div class="form-group">
+  <!-- <div class="form-group">
     <label for="quality-cost">Cost</label>
     <input type="number" class="form-control" id="quality-cost">
-  </div>
-  <button type="submit" class="btn btn-default">Add Quality</button>
+  </div> -->
+  <button type="submit" class="btn btn-default" ng-click='addQuality()'>Add Quality</button>
 </form>

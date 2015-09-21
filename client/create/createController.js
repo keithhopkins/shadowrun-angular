@@ -8,26 +8,26 @@ angular.module('shadowrunApp')
     return characters;
   };
   factory.postCharacter = function(character){
-    
+
   };
   return factory;
 })
 .controller('CreateController', function($scope, characterFactory){
   $scope.character = {
-    race: $scope.race,
+    race: 'Human',
     attributes: {
-      body: $scope.body,
-      strength: $scope.strength,
-      agility: $scope.agility,
-      reaction: $scope.reaction,
-      intuition: $scope.intuition,
-      charisma: $scope.charisma,
-      wisdom: $scope.wisdom,
-      logic: $scope.logic,
-      will: $scope.will,
-      magic: $scope.magic,
-      resonance: $scope.resonance,
-      edge: $scope.edge
+      body: 1,
+      strength: 1,
+      agility: 1,
+      reaction: 1,
+      intuition: 1,
+      charisma: 1,
+      wisdom: 1,
+      logic: 1,
+      will: 1,
+      magic: 0,
+      resonance: 0,
+      edge: 1
     },
     activeSkills: [],
     qualities: [],
@@ -62,10 +62,13 @@ angular.module('shadowrunApp')
 
   $scope.addQuality = function(){
     $scope.character.qualities.push({
-      skill: $scope.skill,
-      rank: $scope.skillRank
+      quality: $scope.quality
     });
-    $scope.skill='';
-    $scope.skillRank='';
+    $scope.quality='';
   };
+
+  $scope.showValues = function(){
+    console.log($scope.character);
+  };
+
 });
