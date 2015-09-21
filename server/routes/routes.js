@@ -15,3 +15,5 @@ router.put('/create', function(req, res, next){
 router.post('/create', function(req, res, next){
   crud.createPostHandler(req, res)
 });
+
+module.exports = router;

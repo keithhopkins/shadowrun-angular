@@ -1,0 +1,97 @@
+<div>
+
+  <section>
+    <h4>Race</h4>
+    <p>{{character.race}}</p>
+  </section>
+
+  <section class='container'>
+    <h4>Attributes</h4>
+    <div class='col-xs-2'>
+      <ul>
+        <li>Body: {{character.attributes.body}}</li>
+        <li>Strength: {{character.attributes.strength}}</li>
+        <li>Agility: {{character.attributes.agility}}</li>
+        <li>Reaction: {{character.attributes.reaction}}</li>
+      </ul>
+    </div>
+    <div class='col-xs-2'>
+      <ul>
+        <li>Charisma: {{character.attributes.charisma}}</li>
+        <li>Intuition: {{character.attributes.intuition}}</li>
+        <li>Logic: {{character.attributes.logic}}</li>
+        <li>Will: {{character.attributes.will}}</li>
+      </ul>
+    </div>
+    <div class='col-xs-2'>
+      <ul>
+        <li>Magic: {{character.attributes.magic}}</li>
+        <li>Resonance: {{character.attributes.resonance}}</li>
+        <li>Edge: {{character.attributes.edge}}</li>
+      </ul>
+    </div>
+  </section>
+
+  <section>
+    <h4>Active Skills</h4>
+    <table class="table">
+      <thead>
+        <tr>
+          <th>Skills</th>
+          <th>Rank</th>
+        </tr>
+      </thead>
+      <tbody ng-repeat='skill in character.activeSkills'>
+        <tr>
+          <td>{{skill.skill}}</td>
+          <td>{{skill.rank}}</td>
+        </tr>
+      </tbody>
+    </table>
+  </section>
+
+  <section>
+    <h4>Qualities</h4>
+    <hr>
+    <span ng-repeat='quality in character.qualities'>
+      {{quality.quality}}&emsp;&emsp;
+    </span>
+  </section>
+
+  <section>
+    <h4>Items</h4>
+    <table class="table">
+      <thead>
+        <tr>
+          <th>Item</th>
+          <th>Quantity</th>
+        </tr>
+      </thead>
+      <tbody ng-repeat='item in character.items'>
+        <tr>
+          <td>{{item.item}}</td>
+          <td>{{item.quantity}}</td>
+        </tr>
+      </tbody>
+    </table>
+  </section>
+
+  <section>
+    <h4>Knowledge Skills</h4>
+    <table class="table">
+      <thead>
+        <tr>
+          <th>Knowledge</th>
+          <th>Rank</th>
+        </tr>
+      </thead>
+      <tbody ng-repeat='knowledge in character.knowledge'>
+        <tr>
+          <td>{{knowledge.skill}}</td>
+          <td>{{knowledge.rank}}</td>
+        </tr>
+      </tbody>
+    </table>
+  </section>
+
+</div>

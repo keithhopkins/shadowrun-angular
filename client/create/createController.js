@@ -55,9 +55,11 @@ angular.module('shadowrunApp')
 
   $scope.addItem = function(){
     $scope.character.items.push({
-      item: $scope.item
+      item: $scope.item,
+      quantity: $scope.itemQuantity
     });
     $scope.item='';
+    $scope.itemQuantity='';
   };
 
   $scope.addQuality = function(){

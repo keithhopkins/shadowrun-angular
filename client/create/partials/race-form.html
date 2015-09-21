@@ -1,17 +1,24 @@
 <form class='form-inline'>
   <div class="form-group">
-    <div class="dropdown">
+    <!-- <div class="dropdown">
       <button class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
         Choose Race
         <span class="caret"></span>
       </button>
-      <ul class="dropdown-menu">
-        <li>Human</li>
-        <li>Dwarf</li>
-        <li>Ork</li>
-        <li>Elf</li>
-        <li>Troll</li>
+      <ul class="dropdown-menu" ng-model='character.race'>
+        <li value='Human'> Human </li>
+        <li value='Dwarf'> Dwarf </li>
+        <li> Ork </li>
+        <li> Elf </li>
+        <li> Troll </li>
       </ul>
-    </div>
+    </div> -->
+    <select ng-model='character.race'>
+      <option>Human</option>
+      <option>Dwarf</option>
+      <option>Ork</option>
+      <option>Elf</option>
+      <option>Troll</option>
+    </select>
   </div>
 </form>
