@@ -1,20 +1,18 @@
 angular.module('shadowrunApp')
-.factory('characterFactory', function(){
-  var characters = [];
-  var factory = {};
-  factory.getCharacter = function(){
-    // should return the character that we want to modify
-    // needs to be updated
-    return characters;
-  };
-  factory.postCharacter = function(character){
-
-  };
-  return factory;
-})
 .controller('CreateController', function($scope, characterFactory){
   $scope.character = {
-    race: 'Human',
+    personalData: {
+      alias: '',
+      age: 0,
+      metatype: 'Human',
+      ethnicity: '',
+      sex: '',
+      height: '',
+      weight: '',
+      notoriety: '',
+      streetCred: '',
+      publicAwareness: ''
+    },
     attributes: {
       body: 1,
       strength: 1,
@@ -68,9 +66,13 @@ angular.module('shadowrunApp')
     });
     $scope.quality='';
   };
-
-  $scope.showValues = function(){
-    console.log($scope.character);
-  };
-
+  $scope.postCharacter = function(){
+    characterFactory.postCharacter($scope.character)
+      .success(function(){
+        console.log('SUCCESS');
+      })
+      .error(function(err){
+        console.log(err);
+      });
+  }
 });

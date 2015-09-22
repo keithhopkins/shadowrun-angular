@@ -12,8 +12,8 @@ router.put('/create', function(req, res, next){
   crud.createPutHandler(req, res);
 });
 
-router.post('/create', function(req, res, next){
-  crud.createPostHandler(req, res)
+router.post('/create/character', function(req, res, next){
+  crud.createPostHandler(req, res);
 });
 
 module.exports = router;

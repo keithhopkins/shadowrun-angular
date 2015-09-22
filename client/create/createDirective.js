@@ -1,10 +1,30 @@
-// Race Form
-angular.module('createDirective',[])
-  .directive('raceForm', function(){
+// Personal Data Form
+angular.module('createDirective', [])
+  .directive('personalDataForm', function(){
     return {
       restrict: 'E',
       replace: true,
-      templateUrl: 'create/partials/race-form.html'
+      templateUrl: 'create/partials/personal-data-form.html'
+    };
+  });
+
+// Race Form
+angular.module('createDirective')
+  .directive('metatypeForm', function(){
+    return {
+      restrict: 'E',
+      replace: true,
+      templateUrl: 'create/partials/metatype-form.html'
+    };
+  });
+
+// Attributes Form
+angular.module('createDirective')
+  .directive('attributesForm', function(){
+    return {
+      restrict: 'E',
+      replace: true,
+      templateUrl: 'create/partials/attributes-form.html'
     };
   });
 
@@ -38,16 +58,6 @@ angular.module('createDirective')
     };
   });
 
-// Attributes Form
-angular.module('createDirective')
-  .directive('attributesForm', function(){
-    return {
-      restrict: 'E',
-      replace: true,
-      templateUrl: 'create/partials/attributes-form.html'
-    };
-  });
-
 // Knowledge Form
 angular.module('createDirective')
   .directive('knowledgeForm', function(){
@@ -66,4 +76,4 @@ angular.module('createDirective')
       replace: true,
       templateUrl: 'create/partials/character-display.html'
     }
-  })
+  });
