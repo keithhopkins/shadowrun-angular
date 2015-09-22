@@ -32,3 +32,5 @@ var characterSchema = new Schema({
     rank: Number
   }]
 });
+
+module.exports = mongoose.model('characters', characterSchema);

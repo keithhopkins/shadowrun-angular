@@ -2,36 +2,44 @@
   <!-- character creation forms -->
   <div class='col-xs-6'>
     <h2>Create Character</h2>
+
+    <!-- Personal Data Form -->
     <section>
       <button class='btn btn-default' ng-click='showData=!showData'>Personal Data</button>
       <personal-data-form ng-show='showData'></personal-data-form>
     </section>
 
+    <!-- Metatype Form -->
     <section>
       <button class='btn btn-default' ng-click='showMetatype=!showMetatype'>Metatype</button>
       <metatype-form ng-show='showMetatype'></metatype-form>
     </section>
 
+    <!-- Attributes Form -->
     <section>
       <button class='btn btn-default' ng-click='showAttributes=!showAttributes'>Attributes</button>
       <attributes-form ng-show='showAttributes'></attributes-form>
     </section>
 
+    <!-- Skills Form -->
     <section>
       <button class='btn btn-default' ng-click='showSkills=!showSkills'>Active Skills</button>
       <skills-form ng-show='showSkills'></skills-form>
     </section>
 
+    <!-- Qualities Form -->
     <section>
       <button class='btn btn-default' ng-click='showQualities=!showQualities'>Qualities</button>
       <qualities-form ng-show='showQualities'></qualities-form>
     </section>
 
+    <!-- Items Form -->
     <section>
       <button class='btn btn-default' ng-click='showItems=!showItems'>Items</button>
       <items-form ng-show='showItems'></items-form>
     </section>
 
+    <!-- Knowledge Form -->
     <section>
       <button class='btn btn-default' ng-click='showKnowledge=!showKnowledge'>Knowledge Skills</button>
       <knowledge-form ng-show='showKnowledge'></knowledge-form>
@@ -43,6 +51,44 @@
   <!-- current character sheet -->
   <div class='col-xs-6'>
     <h2>Current Character</h2>
-    <character-display></character-display>
+    <div>
+      <!-- Personal Data Display -->
+      <section class='container'>
+        <h4 ng-click='displayData=!displayData'>Personal Data</h4>
+        <personal-data-display ng-hide='displayData'></personal-data-display>
+      </section>
+
+      <!-- Attributes Display -->
+      <section class='container'>
+        <h4 ng-click='displayAttributes=!displayAttributes'>Attributes</h4>
+        <attributes-display ng-hide='displayAttributes'></attributes-display>
+      </section>
+
+      <!-- Active Skills Display -->
+      <section>
+        <h4 ng-click='displaySkills=!displaySkills'>Active Skills</h4>
+        <skills-display ng-hide='displaySkills'></skills-display>
+      </section>
+
+      <!-- Qualities Display -->
+      <section>
+        <h4 ng-click='displayQualities=!displayQualities'>Qualities</h4>
+        <qualities-display ng-hide='displayQualities'></qualities-display>
+      </section>
+
+      <!-- Items Display -->
+      <section>
+        <h4 ng-click='displayItems=!displayItems'>Items</h4>
+        <items-display ng-hide='displayItems'></items-display>
+      </section>
+
+      <!-- Knowledge Skills Display -->
+      <section>
+        <h4 ng-click='displayKnowledge=!displayKnowledge'>Knowledge Skills</h4>
+        <knowledge-display ng-hide='displayKnowledge'></knowledge-display>
+      </section>
+
+    </div>
+
   </div>
 </div> <!-- container -->

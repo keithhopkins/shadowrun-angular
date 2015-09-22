@@ -4,7 +4,7 @@ angular.module('createDirective', [])
     return {
       restrict: 'E',
       replace: true,
-      templateUrl: 'create/partials/personal-data-form.html'
+      templateUrl: 'create/partials/forms/personal-data-form.html'
     };
   });
 
@@ -14,7 +14,7 @@ angular.module('createDirective')
     return {
       restrict: 'E',
       replace: true,
-      templateUrl: 'create/partials/metatype-form.html'
+      templateUrl: 'create/partials/forms/metatype-form.html'
     };
   });
 
@@ -24,7 +24,7 @@ angular.module('createDirective')
     return {
       restrict: 'E',
       replace: true,
-      templateUrl: 'create/partials/attributes-form.html'
+      templateUrl: 'create/partials/forms/attributes-form.html'
     };
   });
 
@@ -34,7 +34,7 @@ angular.module('createDirective')
     return {
       restrict: 'E',
       replace: true,
-      templateUrl: 'create/partials/skills-form.html'
+      templateUrl: 'create/partials/forms/skills-form.html'
     };
   });
 
@@ -44,7 +44,7 @@ angular.module('createDirective')
     return {
       restrict: 'E',
       replace: true,
-      templateUrl: 'create/partials/qualities-form.html'
+      templateUrl: 'create/partials/forms/qualities-form.html'
     };
   });
 
@@ -54,7 +54,7 @@ angular.module('createDirective')
     return {
       restrict: 'E',
       replace: true,
-      templateUrl: 'create/partials/items-form.html'
+      templateUrl: 'create/partials/forms/items-form.html'
     };
   });
 
@@ -64,16 +64,66 @@ angular.module('createDirective')
     return {
       restrict: 'E',
       replace: true,
-      templateUrl: 'create/partials/knowledge-form.html'
+      templateUrl: 'create/partials/forms/knowledge-form.html'
     };
   });
 
-// Character Display
+// Attributes Display
 angular.module('createDirective')
-  .directive('characterDisplay', function(){
+  .directive('attributesDisplay', function(){
     return {
       restrict: 'E',
       replace: true,
-      templateUrl: 'create/partials/character-display.html'
+      templateUrl: 'create/partials/displays/attributes-display.html'
+    }
+  });
+
+// Items Display
+angular.module('createDirective')
+  .directive('itemsDisplay', function(){
+    return {
+      restrict: 'E',
+      replace: true,
+      templateUrl: 'create/partials/displays/items-display.html'
+    }
+  });
+
+// Knowledge Display
+angular.module('createDirective')
+  .directive('knowledgeDisplay', function(){
+    return {
+      restrict: 'E',
+      replace: true,
+      templateUrl: 'create/partials/displays/knowledge-display.html'
+    }
+  });
+
+// Personal Data Display
+angular.module('createDirective')
+  .directive('personalDataDisplay', function(){
+    return {
+      restrict: 'E',
+      replace: true,
+      templateUrl: 'create/partials/displays/personal-data-display.html'
+    }
+  });
+
+// Qualities Display
+angular.module('createDirective')
+  .directive('qualitiesDisplay', function(){
+    return {
+      restrict: 'E',
+      replace: true,
+      templateUrl: 'create/partials/displays/qualities-display.html'
+    }
+  });
+
+// Skills Display
+angular.module('createDirective')
+  .directive('skillsDisplay', function(){
+    return {
+      restrict: 'E',
+      replace: true,
+      templateUrl: 'create/partials/displays/skills-display.html'
     }
   });

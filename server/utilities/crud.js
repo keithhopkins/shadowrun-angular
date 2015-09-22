@@ -1,5 +1,5 @@
 var mongoose = require('mongoose-q')(require('mongoose'), {spread:true});
-var db = require("../database.js");
+var db = require("../models/database.js");
 
 
 function createGetHandler(req, res){

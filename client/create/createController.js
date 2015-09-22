@@ -68,11 +68,11 @@ angular.module('shadowrunApp')
   };
   $scope.postCharacter = function(){
     characterFactory.postCharacter($scope.character)
-      .success(function(){
+      .success(function(data){
         console.log('SUCCESS');
       })
       .error(function(err){
-        console.log(err);
+        console.log(err.message);
       });
   }
 });
