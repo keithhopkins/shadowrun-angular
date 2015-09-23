@@ -66,13 +66,34 @@ angular.module('shadowrunApp')
     });
     $scope.quality='';
   };
+
+  characterFactory.getCharacters()
+  .then(function(response){
+    $scope.characters = response;
+    console.log('success', response);
+  }, function(response){
+    console.log('FAIL', reponse);
+  });
+
   $scope.postCharacter = function(){
     characterFactory.postCharacter($scope.character)
-      .success(function(data){
-        console.log('SUCCESS');
-      })
-      .error(function(err){
-        console.log(err.message);
+      .then(function(response){
+        // this callback will be called asynchronously
+        // when the response is available
+        console.log('SUCCESS', response);
+      }, function(response) {
+        // called asynchronously if an error occurs
+        // or server returns response with an error status.
+        console.log('FAIL', response);
       });
+  };
+
+  $scope.getCharacter = function(){
+    characterFactory.getCharacter($scope.getAlias)
+      .then(function(response){
+        console.log('SUCCESS', response);
+      }, function(response){
+        console.log('FAIL', response);
+      })
   }
 });

@@ -1,4 +1,12 @@
 <div class='container'>
+
+  <!-- GET Character from back end -->
+  <div ng-repeat='char in characters'>
+    <select id='list'>
+      <option >{{char.personalData.alias}}</option>
+    </select>
+  </div>
+
   <!-- character creation forms -->
   <div class='col-xs-6'>
     <h2>Create Character</h2>

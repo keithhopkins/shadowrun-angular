@@ -1,25 +1,40 @@
 var mongoose = require('mongoose-q')(require('mongoose'), {spread:true});
-var db = require("../models/database.js");
+var db = mongoose.model('characters');
 
 
-function createGetHandler(req, res){
-
+function createGetAllHandler(req, res){
+  db.findQ().then(function(data){
+    res.json(data);
+  }).catch(function(err){
+    res.json(err);
+  }).done(); 
 }
 
-function createPutHandler(req, res){
-
+function createGetOneHandler(req, res){
+  var alias = req.params.alias;
+  db.findOneQ({'character.personalData.alias': alias})
+    .then(function(data){
+      res.json(data);
+    }).catch(function(err){
+      res.json(err);
+    }).done();
 }
 
 function createPostHandler(req, res){
-  console.log(req.body);
-  var query=req.body.name;
+  var query={'personalData.alias': req.body.personalData.alias};
+  var update = req.body;
   var options = {upsert: true, new: true};
-  var data = req.body;
-  res.send('test');
+  db.findOneAndUpdateQ(query, update, options)
+    .then(function(data){
+      res.json(data);
+    }).catch(function(err){
+      console.log('error', err);
+      res.json(err);
+    }).done();
 }
 
 module.exports = {
   createPostHandler: createPostHandler,
-  createGetHandler: createGetHandler,
-  createPutHandler: createPutHandler
+  createGetAllHandler: createGetAllHandler,
+  createGetOneHandler: createGetOneHandler
 };

@@ -2,7 +2,18 @@ var mongoose = require('mongoose');
 var Schema   = mongoose.Schema;
 
 var characterSchema = new Schema({
-  race: String,
+  personalData: {
+    alias: String,
+    age: Number,
+    metatype: String,
+    ethnicity: String,
+    sex: String,
+    height: Number,
+    weight: Number,
+    notoriety: Number,
+    streetCred: Number,
+    publicAwareness: Number
+  },
   attributes: {
     body: Number,
     strength: Number,
@@ -25,12 +36,14 @@ var characterSchema = new Schema({
     quality: String
   }],
   items: [{
-    item: String
+    item: String,
+    quantity: Number
   }],
   knowledge: [{
-    knowledge: String,
+    skill: String,
     rank: Number
   }]
 });
 
-module.exports = mongoose.model('characters', characterSchema);
+mongoose.model('characters', characterSchema);
+mongoose.connect('mongodb://localhost/shadowrun');
