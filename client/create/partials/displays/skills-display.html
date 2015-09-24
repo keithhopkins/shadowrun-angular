@@ -3,12 +3,14 @@
     <tr>
       <th>Skills</th>
       <th>Rank</th>
+      <th colspan="3"></th>
     </tr>
   </thead>
-  <tbody ng-repeat='skill in character.activeSkills'>
-    <tr>
+  <tbody>
+    <tr ng-repeat='skill in character.activeSkills'>
       <td>{{skill.skill}}</td>
       <td>{{skill.rank}}</td>
+      <td><span ng-click='deleteSkill($index)' class='glyphicon glyphicon-remove'></span></td>
     </tr>
   </tbody>
 </table>

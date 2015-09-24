@@ -1,6 +1,6 @@
 <div>
   <hr>
   <span ng-repeat='quality in character.qualities'>
-    {{quality.quality}}&emsp;&emsp;
+    <span ng-click=deleteQuality($index)>{{quality.quality}}&emsp;&emsp;</span>
   </span>
 </div>

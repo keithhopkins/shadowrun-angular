@@ -1,14 +1,14 @@
 <div class='container'>
 
-  <!-- GET Character from back end -->
-  <div ng-repeat='char in characters'>
-    <select id='list'>
-      <option >{{char.personalData.alias}}</option>
-    </select>
-  </div>
 
   <!-- character creation forms -->
   <div class='col-xs-6'>
+  <!-- GET Characters from back end and display in a dropdown -->
+    <select ng-model='character' ng-options='char as char.personalData.alias for char in characters'>
+      <pre>{{char}}</pre>
+    </select>
+    <!-- <button ng-click='showValues()'>SHOW</button> -->
+    <button class='btn btn-danger' ng-click='deleteCharacter()'>Delete Character</button>
     <h2>Create Character</h2>
 
     <!-- Personal Data Form -->

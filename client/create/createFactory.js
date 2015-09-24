@@ -1,9 +1,9 @@
 angular.module('shadowrunApp')
 .factory('characterFactory', ['$http', function($http){
   var factory = {};
+
+  // not currently used
   factory.getCharacter = function(alias){
-    // should return the character that we want to modify
-    // needs to be updated
     return $http.get('/create/'+alias);
   };
 
@@ -12,8 +12,11 @@ angular.module('shadowrunApp')
   };
 
   factory.postCharacter = function(character){
-    // Simple POST request example (passing data) :
     return $http.post('/create', character);
+  };
+
+  factory.deleteCharacter = function(id){
+    return $http.delete('/create/delete/'+id);
   };
   return factory;
 }]);

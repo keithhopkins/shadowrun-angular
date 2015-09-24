@@ -3,12 +3,14 @@
     <tr>
       <th>Knowledge</th>
       <th>Rank</th>
+      <th colspan='3'></th>
     </tr>
   </thead>
-  <tbody ng-repeat='knowledge in character.knowledge'>
-    <tr>
+  <tbody>
+    <tr ng-repeat='knowledge in character.knowledge'>
       <td>{{knowledge.skill}}</td>
       <td>{{knowledge.rank}}</td>
+      <td><span ng-click='deleteKnowledge($index)' class='glyphicon glyphicon-remove'></span></td>
     </tr>
   </tbody>
 </table>

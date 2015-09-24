@@ -42,6 +42,10 @@ angular.module('shadowrunApp')
     $scope.skillRank='';
   };
 
+  $scope.deleteSkill = function(index){
+    $scope.character.activeSkills.splice(index,1);
+  }
+
   $scope.addKnowledge = function(){
     $scope.character.knowledge.push({
       skill: $scope.knowledge,
@@ -50,6 +54,10 @@ angular.module('shadowrunApp')
     $scope.knowledge='';
     $scope.knowledgeRank='';
   };
+
+  $scope.deleteKnowledge = function(index){
+    $scope.character.knowledge.splice(index, 1);
+  }
 
   $scope.addItem = function(){
     $scope.character.items.push({
@@ -60,6 +68,10 @@ angular.module('shadowrunApp')
     $scope.itemQuantity='';
   };
 
+  $scope.deleteItem = function(index){
+    $scope.character.items.splice(index, 1);
+  }
+
   $scope.addQuality = function(){
     $scope.character.qualities.push({
       quality: $scope.quality
@@ -67,10 +79,14 @@ angular.module('shadowrunApp')
     $scope.quality='';
   };
 
+  $scope.deleteQuality = function(index){
+    $scope.character.qualities.splice(index, 1);
+  }
+
   characterFactory.getCharacters()
   .then(function(response){
-    $scope.characters = response;
-    console.log('success', response);
+    $scope.characters = response.data;
+    console.log('success', $scope.characters);
   }, function(response){
     console.log('FAIL', reponse);
   });
@@ -80,6 +96,8 @@ angular.module('shadowrunApp')
       .then(function(response){
         // this callback will be called asynchronously
         // when the response is available
+        // pushing an update push request doubles the character on the client side
+        $scope.characters.push(response.data);
         console.log('SUCCESS', response);
       }, function(response) {
         // called asynchronously if an error occurs
@@ -88,12 +106,28 @@ angular.module('shadowrunApp')
       });
   };
 
+  // not currently used
   $scope.getCharacter = function(){
     characterFactory.getCharacter($scope.getAlias)
       .then(function(response){
         console.log('SUCCESS', response);
       }, function(response){
         console.log('FAIL', response);
-      })
-  }
+      });
+  };
+
+  $scope.deleteCharacter = function(){
+      characterFactory.deleteCharacter($scope.character._id)
+        .then(function(response){
+          // should delete the character from the characters array aswell
+
+          console.log('deleted', response);
+        }, function(response){
+          console.log('delete error', response);
+        });
+  };
+
+  $scope.showValues = function(){
+    console.log($scope.character);
+  };
 });

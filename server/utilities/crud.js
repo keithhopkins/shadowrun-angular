@@ -2,12 +2,22 @@ var mongoose = require('mongoose-q')(require('mongoose'), {spread:true});
 var db = mongoose.model('characters');
 
 
+function createDeleteHandler(req, res){
+  console.log("IN THE HANDLER");
+  db.removeQ({_id: req.params.id})
+  .then(function(data){
+    res.json(data);
+  }).catch(function(err){
+    res.json({'message': err});
+  }).done();
+}
+
 function createGetAllHandler(req, res){
   db.findQ().then(function(data){
     res.json(data);
   }).catch(function(err){
-    res.json(err);
-  }).done(); 
+    res.json({'message': err});
+  }).done();
 }
 
 function createGetOneHandler(req, res){
@@ -16,7 +26,7 @@ function createGetOneHandler(req, res){
     .then(function(data){
       res.json(data);
     }).catch(function(err){
-      res.json(err);
+      res.json({'message': err});
     }).done();
 }
 
@@ -28,13 +38,13 @@ function createPostHandler(req, res){
     .then(function(data){
       res.json(data);
     }).catch(function(err){
-      console.log('error', err);
-      res.json(err);
+      res.json({'message': err});
     }).done();
 }
 
 module.exports = {
   createPostHandler: createPostHandler,
   createGetAllHandler: createGetAllHandler,
-  createGetOneHandler: createGetOneHandler
+  createGetOneHandler: createGetOneHandler,
+  createDeleteHandler: createDeleteHandler
 };
