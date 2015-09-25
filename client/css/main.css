@@ -20,3 +20,7 @@ hr {
   float: right;
   width: 40px;
 }
+
+.highlight {
+  background-color: blue;
+}

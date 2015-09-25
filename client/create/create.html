@@ -1,16 +1,16 @@
 <div class='container'>
-
-
-  <!-- character creation forms -->
-  <div class='col-xs-6'>
-  <!-- GET Characters from back end and display in a dropdown -->
+<!-- GET Characters from back end and display in a dropdown -->
+  <div>
     <select ng-model='character' ng-options='char as char.personalData.alias for char in characters'>
       <pre>{{char}}</pre>
     </select>
-    <!-- <button ng-click='showValues()'>SHOW</button> -->
+    <priority-table></priority-table>
     <button class='btn btn-danger' ng-click='deleteCharacter()'>Delete Character</button>
+  </div>
+  <!-- character creation forms -->
+  <div class='col-xs-6'>
+    <!-- <button ng-click='showValues()'>SHOW</button> -->
     <h2>Create Character</h2>
-
     <!-- Personal Data Form -->
     <section>
       <button class='btn btn-default' ng-click='showData=!showData'>Personal Data</button>

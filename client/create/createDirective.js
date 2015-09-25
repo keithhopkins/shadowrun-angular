@@ -127,3 +127,12 @@ angular.module('createDirective')
       templateUrl: 'create/partials/displays/skills-display.html'
     }
   });
+
+angular.module('createDirective')
+  .directive('priorityTable', function(){
+    return {
+      restrict: 'E',
+      replace: true,
+      templateUrl: 'create/partials/forms/priority-table.html'
+    }
+  })
