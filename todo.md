@@ -1,15 +1,4 @@
-character sheet structure
-* attributes :
- * individual attributes
-* skills :
-  * individual skill
-
-
-
-
-
-
-
-Questions:
-* Can I have a directive without a controller and it will default to the next higher level controller?
-* 
+Add Priority Table
+* should modify min/max attributes
+* modifies how much each stat can have
+* upon selecting each Priority, show it's form
