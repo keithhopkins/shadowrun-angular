@@ -128,11 +128,24 @@ angular.module('createDirective')
     }
   });
 
+// Priority Table
 angular.module('createDirective')
   .directive('priorityTable', function(){
     return {
       restrict: 'E',
       replace: true,
       templateUrl: 'create/partials/forms/priority-table.html'
+    }
+  })
+
+angular.module('createDirective')
+  .directive('tableHighlight', function(){
+    return {
+      restrict: 'A',
+      link: function(scope, elem, attr){
+        elem.bind('click', function(){
+          elem.toggleClass('highlight');
+        })
+      }
     }
   })

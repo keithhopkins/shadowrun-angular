@@ -4,8 +4,11 @@
     <select ng-model='character' ng-options='char as char.personalData.alias for char in characters'>
       <pre>{{char}}</pre>
     </select>
-    <priority-table></priority-table>
+    <h2 ng-click='showPriority=!showPriority'>Priority Table</h2>
+    <priority-table ng-show='showPriority'></priority-table>
+    <!-- <div ui-grid='{data : priorityTable}' class='gridStyle'></div>  -->
     <button class='btn btn-danger' ng-click='deleteCharacter()'>Delete Character</button>
+    <button class='btn btn-info' ng-click='postCharacter()'>Save Character</button>
   </div>
   <!-- character creation forms -->
   <div class='col-xs-6'>
@@ -52,8 +55,6 @@
       <button class='btn btn-default' ng-click='showKnowledge=!showKnowledge'>Knowledge Skills</button>
       <knowledge-form ng-show='showKnowledge'></knowledge-form>
     </section>
-
-    <button class='btn btn-info' ng-click='postCharacter()'>Save Character</button>
   </div>
 
   <!-- current character sheet -->
@@ -76,6 +77,7 @@
       <section>
         <h4 ng-click='displaySkills=!displaySkills'>Active Skills</h4>
         <skills-display ng-hide='displaySkills'></skills-display>
+        <!-- <div ui-grid='{data : character.activeSkills}' class='gridStyle'></div> -->
       </section>
 
       <!-- Qualities Display -->
@@ -88,12 +90,14 @@
       <section>
         <h4 ng-click='displayItems=!displayItems'>Items</h4>
         <items-display ng-hide='displayItems'></items-display>
+        <!-- <div ui-grid='{data : character.items}' class='gridStyle'></div> -->
       </section>
 
       <!-- Knowledge Skills Display -->
       <section>
         <h4 ng-click='displayKnowledge=!displayKnowledge'>Knowledge Skills</h4>
         <knowledge-display ng-hide='displayKnowledge'></knowledge-display>
+        <!-- <div ui-grid='{data : character.knowledge}' class='gridStyle'></div> -->
       </section>
 
     </div>

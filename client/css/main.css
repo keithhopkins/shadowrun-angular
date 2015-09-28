@@ -22,5 +22,10 @@ hr {
 }
 
 .highlight {
-  background-color: blue;
+  background-color: aqua;
+}
+
+.gridStyle {
+    width: 600px;
+    height: 200px;
 }
