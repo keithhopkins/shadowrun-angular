@@ -1,46 +1,57 @@
 <form>
   <div class="form-group attr-input">
     <label for="body">Body</label>
-    <input type="number" id="body" ng-model='character.attributes.body'>
+    <input type="number" id="body" ng-model='character.attributes.body'
+        min='{{character.attributes.min.body}}' max='{{character.attributes.max.body}}'>
   </div>
   <div class="form-group attr-input">
     <label for="strength">Strength</label>
-    <input type="number" id="strength" ng-model='character.attributes.strength'>
+    <input type="number" id="strength" ng-model='character.attributes.strength'
+        min='{{character.attributes.min.strength}}' max='{{character.attributes.max.strength}}'>
   </div>
   <div class="form-group attr-input">
     <label for="agility">Agility</label>
-    <input type="number" id="agility" ng-model='character.attributes.agility'>
+    <input type="number" id="agility" ng-model='character.attributes.agility'
+        min='{{character.attributes.min.agility}}' max='{{character.attributes.max.agility}}'>
   </div>
   <div class="form-group attr-input">
     <label for="reaction">Reaction</label>
-    <input type="number" id="reaction" ng-model='character.attributes.reaction'>
+    <input type="number" id="reaction" ng-model='character.attributes.reaction'
+        min='{{character.attributes.min.reaction}}' max='{{character.attributes.max.reaction}}'>
   </div>
   <div class="form-group attr-input">
     <label for="charisma">Charisma</label>
-    <input type="number" id="charisma" ng-model='character.attributes.charisma'>
+    <input type="number" id="charisma" ng-model='character.attributes.charisma'
+        min='{{character.attributes.min.charisma}}' max='{{character.attributes.max.charisma}}'>
   </div>
   <div class="form-group attr-input">
     <label for="intuition">Intuition</label>
-    <input type="number" id="intuition" ng-model='character.attributes.intuition'>
+    <input type="number" id="intuition" ng-model='character.attributes.intuition'
+        min='{{character.attributes.min.intuition}}' max='{{character.attributes.max.intuition}}'>
   </div>
   <div class="form-group attr-input">
     <label for="logic">Logic</label>
-    <input type="number" id="logic" ng-model='character.attributes.logic'>
+    <input type="number" id="logic" ng-model='character.attributes.logic'
+        min='{{character.attributes.min.logic}}' max='{{character.attributes.max.logic}}'>
   </div>
   <div class="form-group attr-input">
     <label for="will">Will</label>
-    <input type="number" id="will" ng-model='character.attributes.will'>
+    <input type="number" id="will" ng-model='character.attributes.will'
+        min='{{character.attributes.min.will}}' max='{{character.attributes.max.will}}'>
   </div>
   <div class="form-group attr-input">
     <label for="magic">Magic</label>
-    <input type="number" id="magic" ng-model='character.attributes.magic'>
+    <input type="number" id="magic" ng-model='character.attributes.magic'
+        min='0' max='{{character.attributes.max.magic}}'>
   </div>
   <div class="form-group attr-input">
     <label for="resonance">Resonance</label>
-    <input type="number" id="resonance" ng-model='character.attributes.resonance'>
+    <input type="number" id="resonance" ng-model='character.attributes.resonance'
+        min='0' max='{{character.attributes.max.resonance}}'>
   </div>
   <div class="form-group attr-input">
     <label for="edge">Edge</label>
-    <input type="number" id="edge" ng-model='character.attributes.edge'>
+    <input type="number" id="edge" ng-model='character.attributes.edge'
+        min='{{character.attributes.min.edge}}' max='{{character.attributes.max.edge}}'>
   </div>
 </form>
