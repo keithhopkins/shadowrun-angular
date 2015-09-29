@@ -18,5 +18,30 @@ angular.module('shadowrunApp')
   factory.deleteCharacter = function(id){
     return $http.delete('/create/delete/'+id);
   };
+
+  factory.addSkill = function(skills, skill, rank){
+    skills.push({
+      skill: skill,
+      rank: rank
+    });
+    skill='';
+    rank='';
+  };
+
+  factory.addItem = function(items, item, quantity){
+    items.push({
+      item: item,
+      quantity: quantity
+    });
+    item='';
+    quantity='';
+  };
+
+  factory.addQuality = function(qualities, quality){
+    qualities.push({
+      quality: quality
+    });
+    quality='';
+  }
   return factory;
 }]);

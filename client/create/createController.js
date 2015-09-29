@@ -60,86 +60,10 @@ angular.module('shadowrunApp')
     knowledge: []
   };
 
-  // Attribute $watches
-  // Agility $watch
-  $scope.$watch(function(scope){
-    return scope.character.attributes.agility;
-  }, function(){
-    $scope.character.personalData.walkSpeed = $scope.character.attributes.agility*2;
-    $scope.character.personalData.runSpeed = $scope.character.attributes.agility*4;
-  });
-  // Reaction $watch
-  $scope.$watch(function(scope){
-    return scope.character.attributes.reaction;
-  }, function(){
-    $scope.character.attributes.initiative = Number($scope.character.attributes.reaction
-                                           + $scope.character.attributes.intuition)
-                                           + ' + 1d6';
-  });
-
-  // Intuition $watch
-  $scope.$watch(function(scope){
-    return scope.character.attributes.intuition;
-  }, function(){
-    $scope.character.attributes.initiative = Number($scope.character.attributes.reaction
-                                           + $scope.character.attributes.intuition)
-                                           + ' + 1d6';
-    $scope.character.attributes.astralInitiative = Number($scope.character.attributes.intuition*2)
-                                                 + ' + 2d6';
-    $scope.character.personalData.judgeIntentions = $scope.character.attributes.charisma
-                                                  + $scope.character.attributes.intuition;
-  });
-
-  // Charisma $watch
-  $scope.$watch(function(scope){
-    return scope.character.attributes.charisma;
-  }, function(){
-    $scope.character.personalData.composure = $scope.character.attributes.charisma
-                                            + $scope.character.attributes.will;
-    $scope.character.personalData.judgeIntentions = $scope.character.attributes.charisma
-                                                  + $scope.character.attributes.intuition;
-  });
-
-  // Logic $watch
-  $scope.$watch(function(scope){
-    return scope.character.attributes.logic;
-  }, function(){
-    $scope.character.personalData.memory = $scope.character.attributes.logic
-                                         + $scope.character.attributes.will;
-  });
-
-  // Willpower $watch
-  $scope.$watch(function(scope){
-    return scope.character.attributes.will;
-  }, function(){
-    $scope.character.personalData.composure = $scope.character.attributes.charisma
-                                            + $scope.character.attributes.will;
-    $scope.character.personalData.memory = $scope.character.attributes.logic
-                                         + $scope.character.attributes.will;
-  });
-
-  // Calculated personalData $watches
-  $scope.$watch(function(scope){
-    return scope.character.personalData.streetCred;
-  }, function(){
-    $scope.character.personalData.notoriety = $scope.character.personalData.streetCred
-                                            + $scope.character.personalData.publicAwareness;
-  });
-
-  $scope.$watch(function (scope){
-    return scope.character.personalData.publicAwareness;
-  }, function(){
-    $scope.character.personalData.notoriety = $scope.character.personalData.streetCred
-                                            + $scope.character.personalData.publicAwareness;
-  });
-
   $scope.addSkill = function(){
-    $scope.character.activeSkills.push({
-      skill: $scope.skill,
-      rank: $scope.skillRank
-    });
-    $scope.skill='';
-    $scope.skillRank='';
+    characterFactory.addSkill($scope.character.activeSkills,
+                              $scope.skill,
+                              $scope.skillRank);
   };
 
   $scope.deleteSkill = function(index){
@@ -147,12 +71,9 @@ angular.module('shadowrunApp')
   }
 
   $scope.addKnowledge = function(){
-    $scope.character.knowledge.push({
-      skill: $scope.knowledge,
-      rank: $scope.knowledgeRank
-    });
-    $scope.knowledge='';
-    $scope.knowledgeRank='';
+    characterFactory.addSkill($scope.character.knowledge,
+                              $scope.knowledge,
+                              $scope.knowledgeRank);
   };
 
   $scope.deleteKnowledge = function(index){
@@ -160,29 +81,25 @@ angular.module('shadowrunApp')
   }
 
   $scope.addItem = function(){
-    $scope.character.items.push({
-      item: $scope.item,
-      quantity: $scope.itemQuantity
-    });
-    $scope.item='';
-    $scope.itemQuantity='';
+    characterFactory.addItem($scope.character.items,
+                             $scope.item,
+                             $scope.itemQuantity);
   };
 
   $scope.deleteItem = function(index){
     $scope.character.items.splice(index, 1);
-  }
+  };
 
   $scope.addQuality = function(){
-    $scope.character.qualities.push({
-      quality: $scope.quality
-    });
-    $scope.quality='';
+    characterFactory.addQuality($scope.character.qualities,
+                                $scope.quality);
   };
 
   $scope.deleteQuality = function(index){
     $scope.character.qualities.splice(index, 1);
   }
 
+  // HTTP Requests
   characterFactory.getCharacters()
   .then(function(response){
     $scope.characters = response.data;
@@ -220,7 +137,6 @@ angular.module('shadowrunApp')
     characterFactory.deleteCharacter($scope.character._id)
       .then(function(response){
         // should delete the character from the characters array aswell
-
         console.log('deleted', response);
       }, function(response){
         console.log('delete error', response);
@@ -231,52 +147,3 @@ angular.module('shadowrunApp')
     console.log($scope.character);
   };
 });
-
-
-
-
-// $scope.priorityTable = {
-//   columnDefs:[{field:'priority'},{field:'metatype'},{field:'attributes'}],
-//   data:[
-//     {
-//       priority: 'A',
-//       metatype: 'Human (9)\nElf (8)\nDwarf (7)\nOrk (7)\nTroll (5)',
-//       attributes: '24',
-//       magicOrResonance: 'Magician or Mystic Adept: Magic 6, two Rating 5 Magic skills, 10 spells\nTechnomancer: Resonance 6, two Rating 5 Resonance Skills, 5 complex forms',
-//       skills: '46/10',
-//       resource: '450,000'
-//     },
-//     {
-//       priority: 'B',
-//       metatype: 'Human (7)\nElf (6)\nDwarf (4)\nOrk (4)\nTroll (0)',
-//       attributes: '20',
-//       magicOrResonance: 'Magician or Mystic Adept: Magic 4, two Rating 4 Magic skills, 7 spells\nTechnomancer: Resonance 4, two Rating 4 Resonance Skills, 2 complex forms\nAdept: Magic 6, one Rating 4 Active Skill\nAspected Magician: Magic 5, one Rating 4 Magical Skill group',
-//       skills: '36/5',
-//       resource: '275,000'
-//     },
-//     {
-//       priority: 'C',
-//       metatype: 'Human (5)\nElf (3)\nDwarf (1)\nOrk (0)',
-//       attributes: '16',
-//       magicOrResonance: 'Magician or Mystic Adept: Magic 3, 5 spells\nTechnomancer: Resonance 3, 1 complex forms\nAdept: Magic 4, one Rating 2 Active Skill\nAspected Magician: Magic 3, one Rating 2 Magical Skill group',
-//       skills: '28/2',
-//       resource: '140,000'
-//     },
-//     {
-//       priority: 'D',
-//       metatype: 'Human (3)\nElf (0)',
-//       attributes: '14',
-//       magicOrResonance: 'Adept: Magic 2 Aspected Magician: Magic 2',
-//       skills: '22/0',
-//       resource: '50,000'
-//     },
-//     {
-//       priority: 'E',
-//       metatype: 'Human (1)',
-//       attributes: '12',
-//       magicOrResonance: 'Mundane',
-//       skills: '10/0',
-//       resource: '6,000'
-//     }
-//   ]
-// }
