@@ -28,10 +28,11 @@ angular.module('shadowrunApp')
     rank='';
   };
 
-  factory.addItem = function(items, item, quantity){
+  factory.addItem = function(items, item, quantity, cost){
     items.push({
       item: item,
-      quantity: quantity
+      quantity: quantity,
+      cost: cost
     });
     item='';
     quantity='';

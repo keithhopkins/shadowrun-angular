@@ -3,7 +3,6 @@ var db = mongoose.model('characters');
 
 
 function createDeleteHandler(req, res){
-  console.log("IN THE HANDLER");
   db.removeQ({_id: req.params.id})
   .then(function(data){
     res.json(data);

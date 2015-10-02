@@ -23,7 +23,7 @@ angular.module('createDirective', [])
     };
   });
 
-// Race Form
+// Metatype Form
 angular.module('createDirective')
   .directive('metatypeForm', function(){
     return {
@@ -34,8 +34,13 @@ angular.module('createDirective')
         scope.$watch(function(scope){
           return scope.character.personalData.metatype;
         }, function(){
+          if(typeof scope.character.personalData.metatype == 'object'){
+            scope.limits.special = scope.character.personalData.metatype.limit;
+            scope.character.personalData.metatype = scope.character.personalData.metatype.metatype;
+          }
+          console.log('limit', scope.limits);
           if(scope.character.personalData.metatype==='Human'){
-            scope.character.attributes.min= {
+            scope.limits.attributes.min= {
                 body: '1',
                 strength: '1',
                 agility: '1',
@@ -47,7 +52,7 @@ angular.module('createDirective')
                 will: '1',
                 edge: '2'
               };
-            scope.character.attributes.max= {
+            scope.limits.attributes.max= {
               body: '6',
               strength: '6',
               agility: '6',
@@ -60,7 +65,7 @@ angular.module('createDirective')
               edge: '7'
             };
           } else if(scope.character.personalData.metatype==='Elf'){
-            scope.character.attributes.min= {
+            scope.limits.attributes.min= {
               body: '1',
               strength: '1',
               agility: '2',
@@ -72,7 +77,7 @@ angular.module('createDirective')
               will: '1',
               edge: '1'
             };
-            scope.character.attributes.max= {
+            scope.limits.attributes.max= {
               body: '6',
               strength: '6',
               agility: '7',
@@ -85,7 +90,7 @@ angular.module('createDirective')
               edge: '6'
             };
           } else if(scope.character.personalData.metatype==='Dwarf'){
-            scope.character.attributes.min= {
+            scope.limits.attributes.min= {
               body: '3',
               strength: '3',
               agility: '1',
@@ -97,7 +102,7 @@ angular.module('createDirective')
               will: '2',
               edge: '1'
             };
-            scope.character.attributes.max= {
+            scope.limits.attributes.max= {
               body: '8',
               strength: '8',
               agility: '6',
@@ -110,7 +115,7 @@ angular.module('createDirective')
               edge: '6'
             };
           } else if(scope.character.personalData.metatype==='Ork'){
-            scope.character.attributes.min= {
+            scope.limits.attributes.min= {
               body: '4',
               strength: '3',
               agility: '1',
@@ -122,7 +127,7 @@ angular.module('createDirective')
               will: '1',
               edge: '1'
             };
-            scope.character.attributes.max= {
+            scope.limits.attributes.max= {
               body: '9',
               strength: '8',
               agility: '6',
@@ -135,7 +140,7 @@ angular.module('createDirective')
               edge: '6'
             };
           } else if(scope.character.personalData.metatype==='Troll'){
-            scope.character.attributes.min= {
+            scope.limits.attributes.min= {
               body: '5',
               strength: '5',
               agility: '1',
@@ -147,7 +152,7 @@ angular.module('createDirective')
               will: '1',
               edge: '1'
             };
-            scope.character.attributes.max= {
+            scope.limits.attributes.max= {
               body: '10',
               strength: '10',
               agility: '5',
@@ -173,6 +178,18 @@ angular.module('createDirective')
       replace: true,
       templateUrl: 'create/partials/forms/attributes-form.html',
       link: function(scope, elem, attr){
+        // Attributes $watch
+        scope.$watch(function(scope){
+          var totalSpent = scope.character.attributes.body-scope.limits.attributes.min.body;
+          totalSpent += scope.character.attributes.strength-scope.limits.attributes.min.strength;
+          totalSpent += scope.character.attributes.agility-scope.limits.attributes.min.agility;
+          totalSpent += scope.character.attributes.reaction-scope.limits.attributes.min.reaction;
+          totalSpent += scope.character.attributes.wisdom-scope.limits.attributes.min.wisdom;
+          totalSpent += scope.character.attributes.charisma-scope.limits.attributes.min.charisma;
+          totalSpent += scope.character.attributes.intuition-scope.limits.attributes.min.intuition;
+          totalSpent += scope.character.attributes.will-scope.limits.attributes.min.will;
+          scope.limits.attributes.spent = totalSpent;
+        });
         // Agility $watch
         scope.$watch(function(scope){
           return scope.character.attributes.agility;
@@ -259,7 +276,18 @@ angular.module('createDirective')
     return {
       restrict: 'E',
       replace: true,
-      templateUrl: 'create/partials/forms/items-form.html'
+      templateUrl: 'create/partials/forms/items-form.html',
+      link: function(scope, elem, attr){
+        scope.$watch(function(scope){
+          return scope.character.items;
+        }, function(){
+          scope.limits.resourceSpent=0;
+          for(var i=0; i<scope.character.items.length; i++){
+            scope.limits.resourceSpent += scope.character.items[i].cost
+                                        * scope.character.items[i].quantity;
+          }
+        }, true);
+      }
     };
   });
 

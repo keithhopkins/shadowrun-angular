@@ -37,7 +37,8 @@ var characterSchema = new Schema({
   }],
   items: [{
     item: String,
-    quantity: Number
+    quantity: Number,
+    cost: Number
   }],
   knowledge: [{
     skill: String,

@@ -17,7 +17,6 @@ router.post('/create', function(req, res, next){
 });
 
 router.delete('/create/delete/:id', function(req, res, next){
-  console.log('ENTERING DELETE');
   crud.createDeleteHandler(req, res);
 });
 
