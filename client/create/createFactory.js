@@ -19,13 +19,19 @@ angular.module('shadowrunApp')
     return $http.delete('/create/delete/'+id);
   };
 
-  factory.addSkill = function(skills, skill, rank){
-    skills.push({
-      skill: skill,
-      rank: rank
-    });
-    skill='';
-    rank='';
+  factory.addSkill = function(skills, skill, rank, group){
+    if(group){
+      skills.push({
+        skill: skill,
+        rank: rank,
+        group: group
+      });
+    } else {
+      skills.push({
+        skill: skill,
+        rank: rank
+      });
+    }
   };
 
   factory.addItem = function(items, item, quantity, cost){
@@ -34,15 +40,12 @@ angular.module('shadowrunApp')
       quantity: quantity,
       cost: cost
     });
-    item='';
-    quantity='';
   };
 
   factory.addQuality = function(qualities, quality){
     qualities.push({
       quality: quality
     });
-    quality='';
   }
   return factory;
 }]);

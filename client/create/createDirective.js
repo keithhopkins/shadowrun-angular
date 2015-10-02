@@ -35,7 +35,7 @@ angular.module('createDirective')
           return scope.character.personalData.metatype;
         }, function(){
           if(typeof scope.character.personalData.metatype == 'object'){
-            scope.limits.special = scope.character.personalData.metatype.limit;
+            scope.limits.attributes.specialMax = scope.character.personalData.metatype.limit;
             scope.character.personalData.metatype = scope.character.personalData.metatype.metatype;
           }
           console.log('limit', scope.limits);
@@ -190,6 +190,7 @@ angular.module('createDirective')
           totalSpent += scope.character.attributes.will-scope.limits.attributes.min.will;
           scope.limits.attributes.spent = totalSpent;
         });
+
         // Agility $watch
         scope.$watch(function(scope){
           return scope.character.attributes.agility;
@@ -197,6 +198,7 @@ angular.module('createDirective')
           scope.character.personalData.walkSpeed = scope.character.attributes.agility*2;
           scope.character.personalData.runSpeed = scope.character.attributes.agility*4;
         });
+
         // Reaction $watch
         scope.$watch(function(scope){
           return scope.character.attributes.reaction;
@@ -217,6 +219,8 @@ angular.module('createDirective')
                                                        + ' + 2d6';
           scope.character.personalData.judgeIntentions = scope.character.attributes.charisma
                                                         + scope.character.attributes.intuition;
+          scope.limits.knowledge = (scope.character.attributes.intuition
+                                 + scope.character.attributes.logic)*3;
         });
 
         // Charisma $watch
@@ -235,6 +239,8 @@ angular.module('createDirective')
         }, function(){
           scope.character.personalData.memory = scope.character.attributes.logic
                                                + scope.character.attributes.will;
+          scope.limits.knowledge = (scope.character.attributes.intuition
+                                 + scope.character.attributes.logic)*3;
         });
 
         // Willpower $watch
@@ -246,6 +252,42 @@ angular.module('createDirective')
           scope.character.personalData.memory = scope.character.attributes.logic
                                                + scope.character.attributes.will;
         });
+
+        // Magic $watch
+        scope.$watch(function(scope){
+          return scope.character.attributes.magic;
+        }, function(){
+          scope.limits.attributes.special = (scope.character.attributes.magic
+                                          - scope.limits.attributes.min.magic)
+                                          + (scope.character.attributes.resonance
+                                          - scope.limits.attributes.min.resonance)
+                                          + (scope.character.attributes.edge
+                                          - scope.limits.attributes.min.edge);
+        });
+
+        // Resonance $watch
+        scope.$watch(function(scope){
+          return scope.character.attributes.resonance;
+        }, function(){
+          scope.limits.attributes.special = (scope.character.attributes.magic
+                                          - scope.limits.attributes.min.magic)
+                                          + (scope.character.attributes.resonance
+                                          - scope.limits.attributes.min.resonance)
+                                          + (scope.character.attributes.edge
+                                          - scope.limits.attributes.min.edge);
+        });
+
+        // Edge $watch
+        scope.$watch(function(scope){
+          return scope.character.attributes.edge;
+        }, function(){
+          scope.limits.attributes.special = (scope.character.attributes.magic
+                                          - scope.limits.attributes.min.magic)
+                                          + (scope.character.attributes.resonance
+                                          - scope.limits.attributes.min.resonance)
+                                          + (scope.character.attributes.edge
+                                          - scope.limits.attributes.min.edge); 
+        });
       }
     };
   });
@@ -256,7 +298,21 @@ angular.module('createDirective')
     return {
       restrict: 'E',
       replace: true,
-      templateUrl: 'create/partials/forms/skills-form.html'
+      templateUrl: 'create/partials/forms/skills-form.html',
+      link: function(scope, elem, attr){
+        scope.$watch(function(scope){
+          return scope.character.activeSkills;
+        }, function(){
+          scope.limits.skillSpent={group: 0, single: 0};
+          for(var i=0; i<scope.character.activeSkills.length; i++){
+            if(scope.character.activeSkills[i].group){
+              scope.limits.skillSpent.group += scope.character.activeSkills[i].rank;
+            } else {
+              scope.limits.skillSpent.single += scope.character.activeSkills[i].rank;
+            }
+          }
+        }, true);
+      }
     };
   });
 
@@ -297,7 +353,17 @@ angular.module('createDirective')
     return {
       restrict: 'E',
       replace: true,
-      templateUrl: 'create/partials/forms/knowledge-form.html'
+      templateUrl: 'create/partials/forms/knowledge-form.html',
+      link: function(scope, elem, attr){
+        scope.$watch(function(scope){
+          return scope.character.knowledge;
+        }, function(){
+          scope.limits.knowledgeSpent = 0;
+          for(var i=0; i<scope.character.knowledge.length; i++){
+            scope.limits.knowledgeSpent += scope.character.knowledge[i].rank;
+          }
+        }, true)
+      }
     };
   });
 

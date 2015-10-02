@@ -138,10 +138,29 @@ angular.module('shadowrunApp')
     }
   };
 
+  $scope.setMagicPriority = function(priority){
+    switch(priority){
+      case "A":
+                break;
+      case "B":
+                break;
+      case "C":
+                break;
+      case "D":
+                break;
+      case "E":
+                break;
+    }
+  }
+
   $scope.addSkill = function(){
     characterFactory.addSkill($scope.character.activeSkills,
                               $scope.skill,
-                              $scope.skillRank);
+                              $scope.skillRank,
+                              $scope.skillGroup);
+    $scope.skill = '';
+    $scope.skillRank = '';
+    $scope.skillGroup=false;
   };
 
   $scope.deleteSkill = function(index){
@@ -152,6 +171,8 @@ angular.module('shadowrunApp')
     characterFactory.addSkill($scope.character.knowledge,
                               $scope.knowledge,
                               $scope.knowledgeRank);
+    $scope.knowledge = '';
+    $scope.knowledgeRank = '';
   };
 
   $scope.deleteKnowledge = function(index){
@@ -164,6 +185,9 @@ angular.module('shadowrunApp')
                              $scope.item,
                              $scope.itemQuantity,
                              $scope.itemCost);
+    $scope.item = '';
+    $scope.itemQuantity = '';
+    $scope.itemCost = '';
   };
 
   $scope.deleteItem = function(index){
@@ -173,6 +197,7 @@ angular.module('shadowrunApp')
   $scope.addQuality = function(){
     characterFactory.addQuality($scope.character.qualities,
                                 $scope.quality);
+    $scope.quality = '';
   };
 
   $scope.deleteQuality = function(index){

@@ -30,7 +30,8 @@ var characterSchema = new Schema({
   },
   activeSkills: [{
     skill: String,
-    rank: Number
+    rank: Number,
+    group: Boolean
   }],
   qualities: [{
     quality: String

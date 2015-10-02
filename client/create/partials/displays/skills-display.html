@@ -1,16 +1,27 @@
-<table class="table table-condensed">
-  <thead>
-    <tr>
-      <th>Skills</th>
-      <th>Rank</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr ng-repeat='skill in character.activeSkills'>
-      <td>{{skill.skill}}</td>
-      <td>{{skill.rank}}</td>
-      <td><span ng-click='deleteSkill($index)' class='glyphicon glyphicon-remove'></span></td>
-    </tr>
-  </tbody>
-</table>
+<div>
+  <table class="table table-condensed">
+    <thead>
+      <tr>
+        <th>Skills</th>
+        <th>Rank</th>
+        <th>Group</th>
+        <th colspan="3"></th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr ng-repeat='skill in character.activeSkills'>
+        <td>{{skill.skill}}</td>
+        <td>{{skill.rank}}</td>
+        <td>
+          <span ng-if='skill.group' class='glyphicon glyphicon-ok-circle'></span>
+          <span ng-if='!skill.group' class='glyphicon glyphicon-remove-circle'></span>
+        </td>
+        <td><span ng-click='deleteSkill($index)' class='glyphicon glyphicon-remove'></span></td>
+      </tr>
+    </tbody>
+  </table>
+  <div>
+    {{limits.skillSpent.single}} out of {{limits.skills.single}} single skillpoints spent.<br>
+    {{limits.skillSpent.group}} out of {{limits.skills.group}} group skillpoints spent.
+  </div>
+</div>

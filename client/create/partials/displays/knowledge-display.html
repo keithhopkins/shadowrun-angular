@@ -1,16 +1,21 @@
-<table class="table table-condensed">
-  <thead>
-    <tr>
-      <th>Knowledge</th>
-      <th>Rank</th>
-      <th colspan='3'></th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr ng-repeat='knowledge in character.knowledge'>
-      <td>{{knowledge.skill}}</td>
-      <td>{{knowledge.rank}}</td>
-      <td><span ng-click='deleteKnowledge($index)' class='glyphicon glyphicon-remove'></span></td>
-    </tr>
-  </tbody>
-</table>
+<div>
+  <table class="table table-condensed">
+    <thead>
+      <tr>
+        <th>Knowledge</th>
+        <th>Rank</th>
+        <th colspan='3'></th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr ng-repeat='knowledge in character.knowledge'>
+        <td>{{knowledge.skill}}</td>
+        <td>{{knowledge.rank}}</td>
+        <td><span ng-click='deleteKnowledge($index)' class='glyphicon glyphicon-remove'></span></td>
+      </tr>
+    </tbody>
+  </table>
+  <div>
+    {{limits.knowledgeSpent}} out of {{limits.knowledge}} knowledge points spent.
+  </div>
+</div>
