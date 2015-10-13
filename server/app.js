@@ -10,9 +10,10 @@ var passport = require('passport');
 var LocalStrategy = require('passport-local').Strategy;
 
 // *** routes *** //
-var routes = require('./routes/routes.js');
-var social = require('./routes/socialAuth.js');
-var local = require('./routes/localAuth.js');
+var routes = require('./routes/createRoutes.js');
+var socialRoutes = require('./routes/socialAuth.js');
+var localRoutes = require('./routes/localAuth.js');
+var userRoutes = require('./routes/userRoutes.js');
 
 // mongodb config
 var mongoose = require('mongoose');
@@ -49,8 +50,9 @@ app.get('/', function(req, res, next) {
   res.sendFile(path.join(__dirname, '../client/', 'index.html'));
 });
 app.use('/', routes);
-app.use('/social/', social);
-app.use('/local/', local);
+app.use('/social/', socialRoutes);
+app.use('/local/', localRoutes);
+app.use('/user/', userRoutes)
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

@@ -19,5 +19,17 @@ angular.module('shadowrunApp')
     return $http.delete('/create/delete/'+id);
   };
 
+  factory.getUserCharacters = function(){
+    return $http.get('/user/characters');
+  };
+
+  factory.saveUserCharacter = function(character){
+    return $http.post('/user/character', character);
+  };
+
+  factory.updateUserCharacter = function(character){
+    return $http.put('/user/character', character);
+  };
+
   return factory;
 }]);
