@@ -1,5 +1,5 @@
 angular.module('shadowrunApp')
-.controller('CreateController', function($scope, characterFactory){
+.controller('CreateController', function($scope, characterFactory, httpFactory){
   $scope.limits={attributes:{}};
   $scope.character = {
     personalData: {
@@ -232,7 +232,7 @@ angular.module('shadowrunApp')
   }
 
   // HTTP Requests
-  characterFactory.getCharacters()
+  httpFactory.getCharacters()
   .then(function(response){
     $scope.characters = response.data;
     console.log('success', $scope.characters);
@@ -241,7 +241,7 @@ angular.module('shadowrunApp')
   });
 
   $scope.postCharacter = function(){
-    characterFactory.postCharacter($scope.character)
+    httpFactory.postCharacter($scope.character)
       .then(function(response){
         // this callback will be called asynchronously
         // when the response is available
@@ -261,7 +261,7 @@ angular.module('shadowrunApp')
 
   // not currently used
   $scope.getCharacter = function(){
-    characterFactory.getCharacter($scope.getAlias)
+    httpFactory.getCharacter($scope.getAlias)
       .then(function(response){
         console.log('SUCCESS', response);
       }, function(response){
@@ -270,7 +270,7 @@ angular.module('shadowrunApp')
   };
 
   $scope.deleteCharacter = function(){
-    characterFactory.deleteCharacter($scope.character._id)
+    httpFactory.deleteCharacter($scope.character._id)
       .then(function(response){
         // should delete the character from the characters array aswell
         $scope.httpMessage = 'Character successfully deleted';
