@@ -1,7 +1,8 @@
 var mongoose = require('mongoose');
-var Schema   = mongoose.Schema;
+var Schema = mongoose.Schema;
 
 var characterSchema = new Schema({
+  class: String,
   personalData: {
     alias: String,
     age: Number,
@@ -47,5 +48,4 @@ var characterSchema = new Schema({
   }]
 });
 
-mongoose.model('characters', characterSchema);
-mongoose.connect('mongodb://localhost/shadowrun');
+module.exports = mongoose.model('characters', characterSchema);

@@ -1,9 +1,9 @@
 var mongoose = require('mongoose-q')(require('mongoose'), {spread:true});
-var db = mongoose.model('characters');
+var Character = require('../models/database');
 
 
 function createDeleteHandler(req, res){
-  db.removeQ({_id: req.params.id})
+  Character.removeQ({_id: req.params.id})
   .then(function(data){
     res.json(data);
   }).catch(function(err){
@@ -12,7 +12,7 @@ function createDeleteHandler(req, res){
 }
 
 function createGetAllHandler(req, res){
-  db.findQ().then(function(data){
+  Character.findQ().then(function(data){
     res.json(data);
   }).catch(function(err){
     res.json({'message': err});
@@ -21,7 +21,7 @@ function createGetAllHandler(req, res){
 
 function createGetOneHandler(req, res){
   var alias = req.params.alias;
-  db.findOneQ({'character.personalData.alias': alias})
+  Character.findOneQ({'character.personalData.alias': alias})
     .then(function(data){
       res.json(data);
     }).catch(function(err){
@@ -33,7 +33,7 @@ function createPostHandler(req, res){
   var query={'personalData.alias': req.body.personalData.alias};
   var update = req.body;
   var options = {upsert: true, new: true};
-  db.findOneAndUpdateQ(query, update, options)
+  Character.findOneAndUpdateQ(query, update, options)
     .then(function(data){
       res.json(data);
     }).catch(function(err){

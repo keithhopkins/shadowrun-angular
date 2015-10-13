@@ -2,12 +2,11 @@ var express = require('express');
 var router = express.Router();
 var crud = require("../utilities/crud.js");
 
-// gets a character sheet for editing
+// gets all character sheets for editing
 router.get('/create/all', function(req, res, next){
   crud.createGetAllHandler(req, res);
 });
 
-// updates a character sheet
 router.get('/create/:alias', function(req, res, next){
   crud.createGetOneHandler(req, res);
 });

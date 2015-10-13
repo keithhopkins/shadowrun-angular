@@ -140,18 +140,45 @@ angular.module('shadowrunApp')
 
   $scope.setMagicPriority = function(priority){
     switch(priority){
-      case "A":
+      case "A": if($scope.character.class === 'Technomancer'){
+                  setMinMagicAndResonance(0,6);
+                } else {
+                  setMinMagicAndResonance(6,0);
+                }
                 break;
-      case "B":
+      case "B": if($scope.character.class === 'Adept'){
+                  setMinMagicAndResonance(6,0);
+                } else if($scope.character.class === 'Aspected Magician'){
+                  setMinMagicAndResonance(5,0);
+                } else if($scope.character.class === 'Technomancer'){
+                  setMinMagicAndResonance(0,4);
+                } else {
+                  setMinMagicAndResonance(4,0);
+                }
                 break;
-      case "C":
+      case "C": if($scope.character.class === 'Adept'){
+                  setMinMagicAndResonance(4,0);
+                } else if($scope.character.class === 'Technomancer'){
+                  setMinMagicAndResonance(0,3);
+                } else {
+                  setMinMagicAndResonance(3,0);
+                }
                 break;
-      case "D":
+      case "D": setMinMagicAndResonance(2,0);
                 break;
-      case "E":
+      case "E": setMinMagicAndResonance(0,0);
                 break;
     }
   }
+
+  function setMinMagicAndResonance(magic, resonance){
+    $scope.limits.attributes.min.magic = magic;
+    $scope.limits.attributes.min.resonance = resonance;
+  }
+
+  $scope.setClass = function(charClass){
+    $scope.character.class = charClass;
+  };
 
   $scope.addSkill = function(){
     characterFactory.addSkill($scope.character.activeSkills,

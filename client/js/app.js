@@ -17,6 +17,17 @@ angular.module('shadowrunApp', ['ngRoute', 'createDirective'])
       templateUrl: 'characters/characters.html',
       controller: 'CharactersController'
     })
+    .when('/login', {
+      templateUrl: 'auth/partials/login.html',
+      controller: 'LoginController'
+    })
+    .when('/logout', {
+      controller: 'LogOutController'
+    })
+    .when('/register', {
+      templateUrl: 'auth/partials/register.html',
+      controller: 'RegisterController'
+    })
     .otherwise({
       redirectTo: '/'
     });

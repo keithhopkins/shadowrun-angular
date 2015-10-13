@@ -19,7 +19,7 @@
           Troll (5)<br>
         </td>
       <td table-highlight ng-click='setAttributesPriority("A")'>24</td>
-      <td table-highlight>Magician or Mystic Adept: Magic 6, two Rating 5 Magic skills, 10 spells<br>
+      <td table-highlight ng-click='setMagicPriority("A")'>Magician or Mystic Adept: Magic 6, two Rating 5 Magic skills, 10 spells<br>
           Technomancer: Resonance 6, two Rating 5 Resonance Skills, 5 complex forms</td>
       <td table-highlight ng-click='setSkillsPriority("A")'>46/10</td>
       <td table-highlight ng-click='setResourcePriority("A")'>450,000</td>
@@ -33,7 +33,7 @@
           Troll (0)<br>
         </td>
       <td table-highlight ng-click='setAttributesPriority("B")'>20</td>
-      <td table-highlight>Magician or Mystic Adept: Magic 4, two Rating 4 Magic skills, 7 spells<br>
+      <td table-highlight ng-click='setMagicPriority("B")'>Magician or Mystic Adept: Magic 4, two Rating 4 Magic skills, 7 spells<br>
           Technomancer: Resonance 4, two Rating 4 Resonance Skills, 2 complex forms<br>
           Adept: Magic 6, one Rating 4 Active Skill<br>
           Aspected Magician: Magic 5, one Rating 4 Magical Skill group<br>
@@ -49,7 +49,7 @@
           Ork (0)<br>
         </td>
       <td table-highlight ng-click='setAttributesPriority("C")'>16</td>
-      <td table-highlight>Magician or Mystic Adept: Magic 3, 5 spells<br>
+      <td table-highlight ng-click='setMagicPriority("C")'>Magician or Mystic Adept: Magic 3, 5 spells<br>
           Technomancer: Resonance 3, 1 complex forms<br>
           Adept: Magic 4, one Rating 2 Active Skill<br>
           Aspected Magician: Magic 3, one Rating 2 Magical Skill group<br>
@@ -63,8 +63,10 @@
           Elf (0)
         </td>
       <td table-highlight ng-click='setAttributesPriority("D")'>14</td>
-      <td table-highlight>Adept: Magic 2
-          Aspected Magician: Magic 2</td>
+      <td table-highlight ng-click='setMagicPriority("D")'>
+        <span ng-click='setClass("Adept")'>Adept: Magic 2</span><br>
+        <span ng-click='setClass("Aspected Magician")'>Aspected Magician: Magic 2</span>
+      </td>
       <td table-highlight ng-click='setSkillsPriority("D")'>22/0</td>
       <td table-highlight ng-click='setResourcePriority("D")'>50,000</td>
     </tr>
@@ -72,7 +74,7 @@
       <td>E</td>
       <td table-highlight ng-click='setMetatypePriority("E")'>Human (1)</td>
       <td table-highlight ng-click='setAttributesPriority("E")'>12</td>
-      <td table-highlight>Mundane</td>
+      <td table-highlight ng-click='setMagicPriority("E")'>Mundane</td>
       <td table-highlight ng-click='setSkillsPriority("E")'>10/0</td>
       <td table-highlight ng-click='setResourcePriority("E")'>6,000</td>
     </tr>
