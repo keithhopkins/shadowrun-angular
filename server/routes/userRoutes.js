@@ -49,10 +49,10 @@ router.post('/character', function(req, res){
 });
 
 router.put('/character', function(req, res){
-  var query = {'personalData.alias': req.body.personalData.alias};
+  var query = req.body._id;
   var update = req.body;
   var options = {upsert: true, new: true};
-  Character.findOneAndUpdateQ(query, update, options)
+  Character.findByIdAndUpdateQ(query, update, options)
   .then(function(response){
     console.log("Character successfully updated");
     res.json(response);

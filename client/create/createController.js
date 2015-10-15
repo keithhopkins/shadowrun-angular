@@ -232,31 +232,41 @@ angular.module('shadowrunApp')
   }
 
   // HTTP Requests
-  httpFactory.getCharacters()
+  httpFactory.getUserCharacters()
   .then(function(response){
     $scope.characters = response.data;
     console.log('success', $scope.characters);
   }, function(response){
-    console.log('FAIL', reponse);
+    console.log('FAIL', response);
   });
 
-  $scope.postCharacter = function(){
-    httpFactory.postCharacter($scope.character)
-      .then(function(response){
-        // this callback will be called asynchronously
-        // when the response is available
-        // pushing an update push request doubles the character on the client side
-        $scope.characters.push(response.data);
-        $scope.httpMessage = 'Save Successful';
-        $scope.httpSucess = 'http-success';
-        console.log('SUCCESS', response);
-      }, function(response) {
-        // called asynchronously if an error occurs
-        // or server returns response with an error status.
-        $scope.httpMessage = 'Save failed. Please try again.';
-        $scope.httpSucess = 'http-fail';
-        console.log('FAIL', response);
-      });
+  $scope.saveCharacter = function(){
+    if($scope.characters.indexOf($scope.character)===-1){
+      httpFactory.saveUserCharacter($scope.character)
+        .then(function(response){
+          // this callback will be called asynchronously
+          // when the response is available
+          // pushing an update push request doubles the character on the client side
+          console.log(response);
+          $scope.characters.push($scope.character);
+          $scope.httpMessage = 'Save Successful';
+          $scope.httpSucess = 'http-success';
+        }, function(response) {
+          // called asynchronously if an error occurs
+          // or server returns response with an error status.
+          $scope.httpMessage = 'Save failed. Please try again.';
+          $scope.httpSucess = 'http-fail';
+        });
+    } else {
+      httpFactory.putUserCharacter($scope.character)
+        .then(function(response){
+          $scope.httpMessage = 'Save Successful';
+          $scope.httpSuccess = 'http-success';
+        }, function(response){
+          $scope.httpMessage = 'Save failed. Please try again';
+          $scope.httpSucess = 'http-fail';
+        });
+    }
   };
 
   // not currently used

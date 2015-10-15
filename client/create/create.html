@@ -2,13 +2,13 @@
 <!-- GET Characters from back end and display in a dropdown -->
   <div>
     <button class='btn btn-danger' ng-click='deleteCharacter()'>Delete Character</button>
-    <button class='btn btn-info' ng-click='postCharacter()'>Save Character</button>
+    <button class='btn btn-info' ng-click='saveCharacter()'>Save Character</button>
     <p ng-class="httpSucess">{{httpMessage}}</p>
 
     <select ng-model='character' ng-options='char as char.personalData.alias for char in characters'>
       <pre>{{char}}</pre>
     </select>
-    
+
     <h2 ng-click='showPriority=!showPriority'>Priority Table</h2>
     <priority-table ng-show='showPriority'></priority-table>
     <!-- <div ui-grid='{data : priorityTable}' class='gridStyle'></div>  -->
