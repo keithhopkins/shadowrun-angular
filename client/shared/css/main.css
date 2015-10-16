@@ -11,6 +11,13 @@ hr {
     height: 0;
     border-top: 2px solid rgba(0, 0, 0, 0.15);
 }
+
+.col-xs-3,
+.col-xs-2 {
+  margin-left: -60px;
+  margin-right: 10px;
+}
+
 .attr-input {
   max-width: 120px;
   margin: 2px;
@@ -23,11 +30,6 @@ hr {
 
 .highlight {
   background-color: aqua;
-}
-
-.gridStyle {
-    width: 600px;
-    height: 200px;
 }
 
 .http-success {

@@ -1,4 +1,4 @@
-angular.module('shadowrunApp', ['ngRoute', 'createDirective'])
+angular.module('shadowrunApp', ['ngRoute','ngAnimate', 'createDirective', 'slideDirective'])
   .config(function($routeProvider){
   $routeProvider
     .when('/', {

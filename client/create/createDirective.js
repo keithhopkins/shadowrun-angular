@@ -3,7 +3,6 @@ angular.module('createDirective', [])
   .directive('personalDataForm', function(){
     return {
       restrict: 'E',
-      replace: true,
       templateUrl: 'create/partials/forms/personal-data-form.html',
       link: function(scope, elem, attr){
         scope.$watch(function(scope){
@@ -28,7 +27,6 @@ angular.module('createDirective')
   .directive('metatypeForm', function(){
     return {
       restrict: 'E',
-      replace: true,
       templateUrl: 'create/partials/forms/metatype-form.html',
       link: function(scope, elem, attr){
         scope.$watch(function(scope){
@@ -175,7 +173,6 @@ angular.module('createDirective')
   .directive('attributesForm', function(){
     return {
       restrict: 'E',
-      replace: true,
       templateUrl: 'create/partials/forms/attributes-form.html',
       link: function(scope, elem, attr){
         // Attributes $watch
@@ -286,7 +283,7 @@ angular.module('createDirective')
                                           + (scope.character.attributes.resonance
                                           - scope.limits.attributes.min.resonance)
                                           + (scope.character.attributes.edge
-                                          - scope.limits.attributes.min.edge); 
+                                          - scope.limits.attributes.min.edge);
         });
       }
     };
@@ -297,7 +294,6 @@ angular.module('createDirective')
   .directive('skillsForm', function(){
     return {
       restrict: 'E',
-      replace: true,
       templateUrl: 'create/partials/forms/skills-form.html',
       link: function(scope, elem, attr){
         scope.$watch(function(scope){
@@ -321,7 +317,6 @@ angular.module('createDirective')
   .directive('qualitiesForm', function(){
     return {
       restrict: 'E',
-      replace: true,
       templateUrl: 'create/partials/forms/qualities-form.html'
     };
   });
@@ -331,7 +326,6 @@ angular.module('createDirective')
   .directive('itemsForm', function(){
     return {
       restrict: 'E',
-      replace: true,
       templateUrl: 'create/partials/forms/items-form.html',
       link: function(scope, elem, attr){
         scope.$watch(function(scope){
@@ -352,7 +346,6 @@ angular.module('createDirective')
   .directive('knowledgeForm', function(){
     return {
       restrict: 'E',
-      replace: true,
       templateUrl: 'create/partials/forms/knowledge-form.html',
       link: function(scope, elem, attr){
         scope.$watch(function(scope){
@@ -372,7 +365,6 @@ angular.module('createDirective')
   .directive('attributesDisplay', function(){
     return {
       restrict: 'E',
-      replace: true,
       templateUrl: 'create/partials/displays/attributes-display.html'
     }
   });
@@ -382,7 +374,6 @@ angular.module('createDirective')
   .directive('itemsDisplay', function(){
     return {
       restrict: 'E',
-      replace: true,
       templateUrl: 'create/partials/displays/items-display.html'
     }
   });
@@ -392,7 +383,6 @@ angular.module('createDirective')
   .directive('knowledgeDisplay', function(){
     return {
       restrict: 'E',
-      replace: true,
       templateUrl: 'create/partials/displays/knowledge-display.html'
     }
   });
@@ -402,7 +392,6 @@ angular.module('createDirective')
   .directive('personalDataDisplay', function(){
     return {
       restrict: 'E',
-      replace: true,
       templateUrl: 'create/partials/displays/personal-data-display.html'
     }
   });
@@ -412,7 +401,6 @@ angular.module('createDirective')
   .directive('qualitiesDisplay', function(){
     return {
       restrict: 'E',
-      replace: true,
       templateUrl: 'create/partials/displays/qualities-display.html'
     }
   });
@@ -422,7 +410,6 @@ angular.module('createDirective')
   .directive('skillsDisplay', function(){
     return {
       restrict: 'E',
-      replace: true,
       templateUrl: 'create/partials/displays/skills-display.html'
     }
   });
@@ -432,7 +419,6 @@ angular.module('createDirective')
   .directive('priorityTable', function(){
     return {
       restrict: 'E',
-      replace: true,
       templateUrl: 'create/partials/forms/priority-table.html'
     }
   })

@@ -9,7 +9,6 @@
   </head>
   <body>
     <!-- nav bar -->
-
     <nav class="navbar navbar-default">
       <div class="container-fluid">
         <!-- Collect the nav links, forms, and other content for toggling -->
@@ -20,19 +19,23 @@
             <li><a href="/#/create">Character Creation</a></li>
             <li><a href="/#/characters">Character DB</a></li>
             <li><a href="/#/login">Log In</a></li>
+            <li>{{user}}</li>
           </ul>
         </div><!-- /.navbar-collapse -->
       </div><!-- /.container-fluid -->
     </nav>
 
+    <nav-bar></nav-bar>
+    
     <div ng-view></div>
 
     <script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
 
-    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.5/angular.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.5/angular.min.js"></script>
     <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.4.3/angular-route.js"></script>
     <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.4.3/angular-touch.js"></script>
+    <script src='http://ajax.googleapis.com/ajax/libs/angularjs/1.4.5/angular-animate.js'></script>
 
     <script type="text/javascript" src="./shared/app.js"></script>
     <script type="text/javascript" src="./shared/httpFactory.js"></script>
@@ -46,6 +49,7 @@
     <script type='text/javascript' src='./auth/controllers/logoutController.js'></script>
     <script type='text/javascript' src='./auth/controllers/registerController.js'></script>
     <script type='text/javascript' src='./auth/authFactory.js'></script>
+    <script type='text/javascript' src='./shared/directives/slideDirective.js'></script>
 
   </body>
 </html>

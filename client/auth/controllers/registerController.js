@@ -16,9 +16,10 @@ angular.module('shadowrunApp')
           $scope.registerForm = {};
         })
         // handle error
-        .catch(function () {
+        .catch(function (response) {
+          console.log('error message', response.err);
           $scope.error = true;
-          $scope.errorMessage = "Something went wrong!";
+          $scope.errorMessage = response.err.message
           $scope.disabled = false;
           $scope.registerForm = {};
         });

@@ -54,6 +54,7 @@ angular.module('shadowrunApp')
         // handle success
         .success(function (data) {
           user = false;
+          $rootScope.user = '';
           deferred.resolve();
         })
         // handle error
@@ -73,6 +74,8 @@ angular.module('shadowrunApp')
         // handle success
         .success(function (data, status) {
           if(status === 200 && data.status){
+            login(username, password);
+            $rootScope.user = username;
             deferred.resolve();
           } else {
             deferred.reject();
@@ -80,7 +83,7 @@ angular.module('shadowrunApp')
         })
         // handle error
         .error(function (data) {
-          deferred.reject();
+          deferred.reject(data);
         });
       // return promise object
       return deferred.promise;
