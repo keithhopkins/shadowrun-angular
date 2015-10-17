@@ -8,25 +8,9 @@
     <base href="/">
   </head>
   <body>
-    <!-- nav bar -->
-    <nav class="navbar navbar-default">
-      <div class="container-fluid">
-        <!-- Collect the nav links, forms, and other content for toggling -->
-        <div class="collapse navbar-collapse">
-          <ul class="nav navbar-nav">
-            <li><a href="/#/">Home</a></li>
-            <li><a href="/#/combat">Combat Tracker</a></li>
-            <li><a href="/#/create">Character Creation</a></li>
-            <li><a href="/#/characters">Character DB</a></li>
-            <li><a href="/#/login">Log In</a></li>
-            <li>{{user}}</li>
-          </ul>
-        </div><!-- /.navbar-collapse -->
-      </div><!-- /.container-fluid -->
-    </nav>
 
     <nav-bar></nav-bar>
-    
+
     <div ng-view></div>
 
     <script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
@@ -50,6 +34,7 @@
     <script type='text/javascript' src='./auth/controllers/registerController.js'></script>
     <script type='text/javascript' src='./auth/authFactory.js'></script>
     <script type='text/javascript' src='./shared/directives/slideDirective.js'></script>
+    <script type='text/javascript' src='./shared/directives/navBarDirective.js'></script>
 
   </body>
 </html>
