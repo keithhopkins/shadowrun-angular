@@ -1,12 +1,31 @@
-Add Priority Table
-* should modify min/max attributes
-* modifies how much each stat can have
-* upon selecting each Priority, show it's form
+# REFACTOR TO HOT TOWEL
+
+## Creation Page Refactor
+
+* side bar
+  * has 'see full character'
+  * 'tab' for each creation step
+* need to add a karma tracker
+* need to finish magic priority table column
+* magic/res/edge points spent still not calculated
+
+## All Characters Page
+
+* side bar
+  * with list of all characters?
+  * or just has a dropdown with characters then you can display each section of the character
+
+## Combat Assistance Page
+
+* sidebar
+  * look at individual player characters / npcs
+  * next round button, or just roll initiative
+  *
 
 
-if you are using a pre-existing character show an "Update Character" button
-
-if it's a new character show a "Create Character" or "Save Character"
 
 
-after a character is deleted from the database it needs to be deleted from the current characters array
+
+
+
+break out userFactory from httpFactory
